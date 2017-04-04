@@ -1,18 +1,27 @@
-all:	cipher
+all:	cipher mydes myaes
 
-cipher:	cipher.o Playfair.o
-	g++ cipher.o Playfair.o -o cipher
+cipher:	cipher.o DES.o AES.o
+	g++ cipher.o DES.o AES.o -o cipher -lcrypto
+
 
 cipher.o:	cipher.cpp
 	g++ -g -c cipher.cpp 
 
-Playfair.o:	Playfair.cpp Playfair.h CipherInterface.h
-	g++ -g -c Playfair.cpp
+mydes:	mydes.cpp
+	g++ mydes.cpp -o mydes -lcrypto
 
-# Uncomment this code once you add the appropriate files
-#RowTransposition.o:	RowTransposition.cpp RowTransposition.h
-#	g++ -g -c RowTransposition.cpp
+myaes:	myaes.cpp
+	g++ myaes.cpp -o myaes -lcrypto
+
+DES.o:	DES.cpp DES.h
+	g++ -g -c DES.cpp
+
+AES.o:	AES.cpp AES.h
+	g++ -g -c AES.cpp
+
+RSA.o:	RSA.cpp RSA.h
+	g++ -g -c RSA.cpp
 
 
 clean:
-	rm -rf *.o cipher
+	rm -rf *.o cipher myaes mydes

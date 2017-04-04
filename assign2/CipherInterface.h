@@ -6,7 +6,7 @@
 using namespace std;
 
 /**
- * This class implements the interface for a typical cipher.
+ * This class implements the interface for a cipher.
  * It defines functions usually used in a cipher
  */
 class CipherInterface
@@ -25,21 +25,21 @@ class CipherInterface
 		 * @param key - the key to use
 		 * @return - True if the key is valid and False otherwise
 		 */
-		virtual bool setKey(const string& key){ return false;  }
+		virtual bool setKey(const unsigned char* key){ return false;  }
 
 		/**	
 		 * Encrypts a plaintext string
 		 * @param plaintext - the plaintext string
 		 * @return - the encrypted ciphertext string
 		 */
-		virtual string encrypt(const string& plaintext){ return ""; }
+		virtual unsigned char* encrypt(const unsigned char* plaintext){ return NULL; }
 
 		/**
 		 * Decrypts a string of ciphertext
 		 * @param ciphertext - the ciphertext
 		 * @return - the plaintext
 		 */
-		virtual string decrypt(const string& ciphertext) { return ""; }
+		virtual unsigned char* decrypt(const unsigned char* ciphertext) { return NULL; }
 
 		/* The protected members */
 	protected:
